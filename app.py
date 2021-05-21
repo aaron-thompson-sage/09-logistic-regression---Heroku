@@ -27,14 +27,16 @@ app.title=tabtitle
 app.layout = html.Div(children=[
     html.H1(myheading1),
     dcc.Input(id='gpa', placeholder='What is your gpa?', type='text'),
+    html.Br(),
     dcc.Input(id='gre', placeholder='What is your gre?', type='text'),
+    html.Br(),
     dcc.RadioItems(
         id='prestige',
         options=[
-                {'Are you famous':list_of_options[0], 'value':list_of_images[0]},
-                {'Are you not so famous':list_of_options[1], 'value':list_of_images[1]},
-                {'Are you not famous at all':list_of_options[2], 'value':list_of_images[2]},
-                {'Are you a nobody':list_of_options[3], 'value':list_of_images[3]},
+                {'label':list_of_options[0], 'value':1},
+                {'label':list_of_options[1], 'value':2},
+                {'label':list_of_options[2], 'value':3},
+                {'label':list_of_options[3], 'value':4},
                 ],
         value=list_of_images[4],
         ),
