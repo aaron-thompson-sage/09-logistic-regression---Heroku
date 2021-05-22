@@ -9,7 +9,6 @@ from dash.dependencies import Input, Output, State
 myheading1='Are you going to my college?'
 tabtitle = 'xkcd'
 list_of_options=['famous', 'not so famous', 'not famous at all', 'a nobody']
-list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.png', 'good_code.png']
 sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
@@ -38,7 +37,7 @@ app.layout = html.Div(children=[
                 {'label':list_of_options[2], 'value':3},
                 {'label':list_of_options[3], 'value':4},
                 ],
-        value=list_of_images[4],
+        value=4,
         ),
     html.Div(id='admit', children=''),
     html.Br(),
@@ -50,8 +49,8 @@ app.layout = html.Div(children=[
 
 
 ########## Define Callback
-@app.callback(Output('your_output_here', 'children'),
-              [Input('your_input_here', 'value')])
+@app.callback(Output('admit', 'children'),
+              [Input('gpa', 'gre', 'value')])
 def radio_results(image_you_chose):
     return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'}),
 
