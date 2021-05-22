@@ -13,7 +13,8 @@ list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.
 sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
-########## Set up the chart
+def predict(gpa, gre, prestige):
+    return ((gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144)
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -48,12 +49,6 @@ app.layout = html.Div(children=[
     Input(component_id='my-id3', component_property='value'),
     ]
 )
-#def update_output_div(gpa)
-#    return f"Welcome to college!"
-#using intercept and coefficients from trained LogisticRegression model.
-def predict(gpa, gre, prestige):
-    return (gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144
-
 def update_output_div(gpa, gre, prestige):
     value = predict(gpa, gre, prestige)
     if (value < 0.5):
