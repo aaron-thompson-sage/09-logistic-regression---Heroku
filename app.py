@@ -14,7 +14,7 @@ sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
 def predict(gpa, gre, prestige):
-    value = ((gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144)
+    value = ((float(gre)*0.00321119) + (float(gpa)*0.7155019) - (float(prestige)*0.42287144) - 3.35801144)
     result = "unknown"
     if value < 0.5:
         result = f"Try a different college. ({value})"
