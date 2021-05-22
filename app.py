@@ -9,9 +9,16 @@ from dash.dependencies import Input, Output, State
 myheading1='Are you going to my college?'
 tabtitle = 'xkcd'
 list_of_options=['famous', 'not so famous', 'not famous at all', 'a nobody']
+list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.png', 'good_code.png']
 sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
+from sklearn.metrics import confusion_matrix
+import pickle
+
+model = pickle.load(open('model', 'rb'))
+def predict(gpa, gre, prestige):
+    return model.predict({'gpa':gpa, 'gre':gre, 'prestige':prestige})
 
 ########## Set up the chart
 
@@ -25,21 +32,13 @@ app.title=tabtitle
 
 app.layout = html.Div(children=[
     html.H1(myheading1),
-    dcc.Input(id='gpa', placeholder='What is your gpa?', type='text'),
-    html.Br(),
-    dcc.Input(id='gre', placeholder='What is your gre?', type='text'),
-    html.Br(),
-    dcc.RadioItems(
-        id='prestige',
-        options=[
-                {'label':list_of_options[0], 'value':1},
-                {'label':list_of_options[1], 'value':2},
-                {'label':list_of_options[2], 'value':3},
-                {'label':list_of_options[3], 'value':4},
-                ],
-        value=4,
-        ),
-    html.Div(id='admit', children=''),
+    html.Div(children=[dcc.Markdown('Enter GPA (0-4)')]),
+    dcc.Input(id='my-id1', value='', type='text'),
+    html.Div(children=[dcc.Markdown('Enter GRE (0-800)')]),
+    dcc.Input(id='my-id2', value='', type='text'),
+    html.Div(children=[dcc.Markdown('Enter Prestige (1-4)')]),
+    dcc.Input(id='my-id3', value='', type='text'),
+    html.Div(id='my-div'),
     html.Br(),
     html.A('Code on Github', href=githublink),
     html.Br(),
@@ -49,10 +48,17 @@ app.layout = html.Div(children=[
 
 
 ########## Define Callback
-@app.callback(Output('admit', 'children'),
-              [Input('gpa', 'gre', 'value')])
-def radio_results(image_you_chose):
-    return html.Img(src=app.get_asset_url(image_you_chose), style={'width': 'auto', 'height': '50%'}),
+@app.callback(
+    Output(component_id='my-div', component_property='children'),
+    [Input(component_id='my-id1', component_property='value'),
+    Input(component_id='my-id2', component_property='value'),
+    Input(component_id='my-id3', component_property='value'),
+    ]
+)
+def update_output_div(gpa, gre, prestige):
+    if (predict(gpa, gre, prestige) == 0):
+        return f"Try a different college."
+    return f"Welcome to college!"
 
 
 ############ Deploy
