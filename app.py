@@ -50,11 +50,11 @@ app.layout = html.Div(children=[
     ]
 )
 def update_output_div(gpa, gre, prestige):
-    value = gpa #predict(gpa, gre, prestige)
+    value = predict(gpa, gre, prestige)
     result = "unknown"
-    if (value < 0.5):
+    if value < 0.5:
         result = f"Try a different college. ({value})"
-    else :
+    else:
         result = f"Welcome to college! ({value})"
     return result
 
