@@ -10,7 +10,7 @@ myheading1='Are you going to my college?'
 tabtitle = '09-Admission'
 list_of_options=['famous', 'not so famous', 'not famous at all', 'a nobody']
 list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.png', 'good_code.png']
-sourceurl = 'https://github.com/aaron-thompson-sage/09-logistic-regression---Heroku/blob/1632e6293d34cb0b80a07dcdc7bdbd708f23512d/docs/Admission-Prediction-Homework.ipynb'
+sourceurl = 'https://github.com/aaron-thompson-sage/09-logistic-regression---Heroku/blob/258d534083bb2709ace4977421e8127ad6727aeb/docs/Admission-Prediction-Homework.ipynb'
 githublink = 'https://github.com/aaron-thompson-sage/09-logistic-regression---Heroku'
 
 def predict(gpa, gre, prestige):
