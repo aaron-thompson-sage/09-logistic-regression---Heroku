@@ -52,10 +52,12 @@ app.layout = html.Div(children=[
     Input(component_id='my-id3', component_property='value'),
     ]
 )
-def update_output_div(gpa, gre, prestige):
-    if (predict(gpa, gre, prestige) == 0):
-        return f"Try a different college."
+def update_output_div(gpa)
     return f"Welcome to college!"
+#def update_output_div(gpa, gre, prestige):
+#    if (predict(gpa, gre, prestige) == 0):
+#        return f"Try a different college."
+#    return f"Welcome to college!"
 
 
 ############ Deploy
