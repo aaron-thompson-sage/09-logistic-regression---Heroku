@@ -13,12 +13,9 @@ list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.
 sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
-from sklearn.metrics import confusion_matrix
-import pickle
-
-model = pickle.load(open('model', 'rb'))
+#using intercept and coefficients from trained LogisticRegression model.
 def predict(gpa, gre, prestige):
-    return model.predict({'gpa':gpa, 'gre':gre, 'prestige':prestige})
+    return (gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144
 
 ########## Set up the chart
 
