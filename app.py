@@ -7,11 +7,11 @@ from dash.dependencies import Input, Output, State
 ########### Define your variables ######
 
 myheading1='Are you going to my college?'
-tabtitle = 'xkcd'
+tabtitle = '09-Admission'
 list_of_options=['famous', 'not so famous', 'not famous at all', 'a nobody']
 list_of_images=['outlier.png', 'correlation.png', 'gitcommit.jpg', 'scatterplot.png', 'good_code.png']
-sourceurl = 'https://xkcd.com/'
-githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
+sourceurl = 'https://github.com/aaron-thompson-sage/09-logistic-regression---Heroku/blob/1632e6293d34cb0b80a07dcdc7bdbd708f23512d/docs/Admission-Prediction-Homework.ipynb'
+githublink = 'https://github.com/aaron-thompson-sage/09-logistic-regression---Heroku'
 
 def predict(gpa, gre, prestige):
     value = ((float(gre)*0.00321119) + (float(gpa)*0.7155019) - (float(prestige)*0.42287144) - 3.35801144)
