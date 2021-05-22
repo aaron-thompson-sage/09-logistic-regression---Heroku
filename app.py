@@ -14,7 +14,13 @@ sourceurl = 'https://xkcd.com/'
 githublink = 'https://github.com/austinlasseter/dash-callbacks-radio'
 
 def predict(gpa, gre, prestige):
-    return ((gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144)
+    value = ((gre*0.00321119) + (gpa*0.7155019) - (prestige*0.42287144) - 3.35801144)
+    result = "unknown"
+    if value < 0.5:
+        result = f"Try a different college. ({value})"
+    else:
+        result = f"Welcome to college! ({value})"
+    return result
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -50,13 +56,7 @@ app.layout = html.Div(children=[
     ]
 )
 def update_output_div(gpa, gre, prestige):
-    value = predict(gpa, gre, prestige)
-    result = "unknown"
-    if value < 0.5:
-        result = f"Try a different college. ({value})"
-    else:
-        result = f"Welcome to college! ({value})"
-    return result
+    return predict(gpa, gre, prestige)
 
 
 ############ Deploy
